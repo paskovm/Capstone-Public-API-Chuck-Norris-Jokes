@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Check Norris Jokes</title>
-  </head>
-  <body>
-    <h1>Find out what Chuck Norris can do!</h1>
-    <form action="/" class="form" method="POST">
-      <select
-        class="form-select form-select-lg mb-3"
-        aria-label="Large select example"
-      >
-        <option selected>Random category</option>
-        <% if (locals.categories) { %>
-            <% for (var i = 0; i < locals.categories.length; i++) { %>
-                <option value=<%= i %>><%= categories[i] %></option>
-            <% } %>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check Norris Jokes</title>
+</head>
+
+<body>
+  <h1>Find out what Chuck Norris can do!</h1>
+  <form action="/" id="form" class="form" method="POST">
+    <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="category">
+      <option value="" selected>random category</option>
+      <% if (locals.categories) { %>
+        <% for (var i=0; i < locals.categories.length; i++) { %>
+          <option value=<%= categories[i] %>><%= categories[i] %></option>
         <% } %>
-      </select>
-    </form>
-    <input class="btn btn-primary" type="button" value="Submit">
-    <div class="card">
-      <div class="card-body">This is some text within a card body.</div>
+      <% } %>
+    </select>
+    <button type="submit" class="form-submit">Submit</button>
+  </form>
+  <div class="card">
+    <div class="card-body">
+      <% if (locals.content) { %>
+        <%= content %>
+      <% } %>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
