@@ -8,6 +8,7 @@ const API_URL = "https://api.chucknorris.io/jokes";
 var categories;
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
     try {
